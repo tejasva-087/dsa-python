@@ -159,3 +159,57 @@ def find_all_duplicates(arr):
 # print(find_all_duplicates([4, 3, 2, 1, 0, 1, 2, 3]))
 # print(find_all_duplicates([4, 3, 2, 1, 0]))
 
+# Frequency Counter / Multiple Pointer - findPair
+# Given an unsorted array and a number n, find if there exists a pair of elements in the array whose
+# difference is n. This function should return true if the pair exists or false if it does not.
+#
+# findPair([6,1,4,10,2,4], 2) // true
+# findPair([8,6,2,4,1,0,2,5,13],1) // true
+# findPair([4,-2,3,10],-6) // true
+# findPair([6,1,4,10,2,4], 22) // false
+# findPair([], 0) // false
+# findPair([5,5], 0) // true
+# findPair([-4,4], -8) // true
+# findPair([-4,4], 8) // true
+# findPair([1,3,4,6],-2) // true
+# findPair([0,1,3,4,6],-2) // true
+# findPair([1,2,3], 0) // false
+# Part 1 - solve this with the following requirements:
+#
+# Time Complexity Requirement - O(n)
+#
+# Space Complexity Requirement - O(n)
+#
+# Part 2 - solve this with the following requirements:
+#
+# Time Complexity Requirement - O(n log n)
+#
+# Space Complexity Requirement - O(1)
+
+def find_pair(nums, target):
+    if len(nums) < 2:
+        return False
+
+    target = abs(target)
+    seen = set()
+
+    for i in nums:
+        if i - target in seen or i + target in seen:
+            return True
+        seen.add(i)
+
+    return False
+
+
+print(find_pair([6, 1, 4, 10, 2, 4], 2))
+print(find_pair([8,6,2,4,1,0,2,5,13],1))
+print(find_pair([4,-2,3,10],-6))
+print(find_pair([6,1,4,10,2,4], 22))
+print(find_pair([], 0))
+print(find_pair([5,5], 0))
+print(find_pair([-4,4], -8))
+print(find_pair([-4,4], 8))
+print(find_pair([1,3,4,6],-2))
+print(find_pair([0,1,3,4,6],-2))
+print(find_pair([1,2,3], 0))
+
